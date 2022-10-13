@@ -41,6 +41,7 @@ case class Result(
 }
 
 object Result {
+  /** Parses a string in the format `year;day;part;solution;time;timestamp;submitted` to a Result */
   def parse(str: String): Result = {
     val parts = str.split(";").toList
     require(parts.length == 7, "Invalid format")
