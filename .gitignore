@@ -27,10 +27,15 @@ local.sbt
 metals.sbt
 null/
 
+# scala-cli
+.scala/
+
 # IDEA
 .idea
 .idea_modules
 /.worksheet/
 
 # other
+*.worksheet.sc
+other/
 TODO.md
