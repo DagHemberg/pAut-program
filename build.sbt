@@ -1,5 +1,5 @@
 name := "pAut-program"
-ThisBuild / version := "0.1.1"
+ThisBuild / version := "0.1.2"
 
 lazy val program = project
   .in(file("."))
