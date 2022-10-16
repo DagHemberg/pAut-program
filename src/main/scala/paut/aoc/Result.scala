@@ -23,8 +23,8 @@ case class Result(
     time: Double,
     timestamp: LocalDateTime = LocalDateTime.now(),
     submitted: Boolean = false
-):
-  override def toString = 
+) {
+  override def toString = {
     val from = s"AoC $year day $day - Part $part"
     val latest = s"Latest run: ${timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"
     val dur = s"Fastest run: ${YELLOW}${fmt(time)}${RESET}"
@@ -38,11 +38,14 @@ case class Result(
         |$stat
         |""".stripMargin
 
+  }
   def raw = s"$year;$day;$part;$solution;${fmt(time)};$timestamp;$submitted"
+}
 
-object Result:
+
+object Result {
   /** Parses a string in the format `year;day;part;solution;time;timestamp;submitted` to a `Result` */
-  def parse(str: String) = 
+  def parse(str: String) = {
     val parts = str.split(";").toVector
     Result(
       year = parts(0).toInt,
@@ -53,8 +56,10 @@ object Result:
       timestamp = LocalDateTime.parse(parts(5), DateTimeFormatter.ISO_LOCAL_DATE_TIME),
       submitted = parts(6).toBoolean
     )
+  }
 
   /** Parses a string in the format `year;day;part;solution;time;timestamp;submitted` to a `Try[Result]`
    * @return `Success(Result)` if the string was successfully parsed, `Failure(e)` otherwise
    */
   def tryParse(str: String) = Try(parse(str))
+}
