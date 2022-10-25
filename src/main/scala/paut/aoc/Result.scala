@@ -27,7 +27,7 @@ case class Result(
   override def toString = {
     val from = s"AoC $year day $day - Part $part"
     val latest = s"Latest run: ${timestamp.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)}"
-    val dur = s"Fastest run: ${YELLOW}${fmt(time)}${RESET}"
+    val dur = s"Fastest run: ${YELLOW}${fmt(time)}${RESET} s"
     val sol = s"Solution: $solution"
     val stat = s"Status: ${if (submitted) s"${GREEN}Submitted${RESET}" else s"${RED}Not submitted${RESET}"}"
     
@@ -41,7 +41,6 @@ case class Result(
   }
   def raw = s"$year;$day;$part;$solution;${fmt(time)};$timestamp;$submitted"
 }
-
 
 object Result {
   /** Parses a string in the format `year;day;part;solution;time;timestamp;submitted` to a `Result` */
