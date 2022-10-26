@@ -26,7 +26,7 @@ abstract class Problem[A]
   override def toString = s"Day $day: $name ($year)"
   
   private def exampleInput(i: Int) = readFile("examples", year, f"$day%02d-$i.txt")
-  private lazy val puzzleInput = readFile("puzzles", year, s"$day.txt")
+  private lazy val puzzleInput = readFile("puzzles", year, f"$day%02d.txt")
 
   private def timeSolve(data: Option[List[String]]) = data.map(d => TimedEval.time(solve(d)))
 
