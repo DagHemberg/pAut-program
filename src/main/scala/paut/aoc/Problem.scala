@@ -5,6 +5,11 @@ import scala.util.Try
 
 import Console._
 
+trait Part { def toInt: Int }
+case object NA  extends Part { val toInt = 0 }
+case object Pt1 extends Part { val toInt = 1 }
+case object Pt2 extends Part { val toInt = 2 }
+
 /** An abstract class for solving a problem from Advent of Code. 
   * @param year the year the problem is from
   * @param day the day of the year the problem is from
@@ -13,8 +18,7 @@ import Console._
   * @param i what example file input to use, defaults to 1
   */
 abstract class Problem[A]
-  (val day: Int, val year: Int)
-  (val part: Int)
+  (val day: Int, val year: Int, val part: Part)
   (val exampleSolution: ExampleSolution[A], val i: Int = 1) 
   extends App with ProblemOps[A] {
 
